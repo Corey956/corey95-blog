@@ -105,7 +105,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/local/prometheus/prometheus --config.file=/usr/local/prometheus/prometheus.yml --web.enable-lifecycle --storage.tsdb.path=/usr/local/prometheus/data --storage.tsdb.retention=60d
+ExecStart=/usr/local/prometheuscd/prometheus --config.file=/usr/local/prometheuscd/prometheus.yml --web.enable-lifecycle --storage.tsdb.path=/usr/local/prometheuscd/data --storage.tsdb.retention=60d
 Restart=on-failure
 
 [Install]
@@ -118,6 +118,15 @@ Prometheus启动参数说明
 - –web.enable-lifecycle：prometheus配置更改后可以进行热加载
 - –storage.tsdb.path：监控数据存储路径
 - –storage.tsdb.retention：数据保留时间
+
+设置开机启动
+
+```
+systemctl daemon-reload
+systemctl enable prometheus.service
+systemctl start prometheus.service
+systemctl status prometheus.service
+```
 
 热加载方式
 
@@ -158,4 +167,11 @@ Grafana官方提供模板地址： https://grafana.com/grafana/dashboards
 填写好了之后点击Load，一路确定就可以了
 
 ![image-20230213013249861](https://bear-iot-c-test.oss-cn-shenzhen.aliyuncs.com/biji/202302130132898.png)
+
+```
+systemctl daemon-reload
+systemctl enable grafana-server.service
+systemctl start grafana-server.service
+systemctl status grafana-server.service
+```
 
