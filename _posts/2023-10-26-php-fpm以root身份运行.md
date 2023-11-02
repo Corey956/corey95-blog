@@ -1,5 +1,8 @@
 ---
-c
+layout: mypost
+title: php-fpm以root身份运行
+categories: [CentOS]
+extMath: true
 
 ---
 
